@@ -23,7 +23,7 @@ end
 ```
 
 Basically:
-* `not_a_pipe` is a decorator to mark methods inside which `>>` works as “pipe operator”;
+* `pipe` is a decorator to mark methods inside which `>>` works as “pipe operator”;
 * every step can reference `_` which would be a result of the previous step;
 * but it also can omit the reference and just specify a method to call; the result of the previous step would be substituted as the _first argument_ of the method.
 
