@@ -61,7 +61,7 @@ RSpec.describe NotAPipe do
       Class.new do
         extend NotAPipe
 
-        not_a_pipe def root(a)
+        pipe def root(a)
           a >> Math.sqrt >> "sqrt(%i) = %i" % [a, _]
         end
       end

@@ -26,7 +26,7 @@ end
 require 'not_a_pipe'
 extend NotAPipe
 
-not_a_pipe def with_not_a_pipe
+pipe def with_not_a_pipe
   RANGE.each do |i|
     i >> Math.sqrt >> _.round >> Time.at >> {hour: _.hour, min: _.min} >> JSON.generate
   end

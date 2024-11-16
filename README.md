@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zverok/not_a_pipe/master/img/une_pipe.jpg"/>
+  <img src="https://github.com/zverok/not_a_pipe/blob/main/img/une_pipe.jpg?raw=true"/>
 </p>
 
 # This is not a pipe
@@ -13,7 +13,7 @@ extend NotAPipe
 
 not_a_pipe def repos(username)
   username >>
-    ("https://api.github.com/users/%s/repos" % _) >>
+    "https://api.github.com/users/#{_}/repos" >>
     URI.open >>
     _.read >>
     JSON.parse(symbolize_names: true) >>

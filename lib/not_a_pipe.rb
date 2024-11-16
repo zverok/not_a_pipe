@@ -5,7 +5,7 @@ require 'method_source'
 module NotAPipe
   # Usage:
   #
-  #   not_a_pipe def my_method
+  #   pipe def my_method
   #      value >> Some.method >> _.some_call >> [_, anything]
   #   end
   #
@@ -17,11 +17,11 @@ module NotAPipe
   #      _ = _.some_call
   #      _ = [_, anything]
   #   end
-  def not_a_pipe(name)
+  def pipe(name)
     meth = is_a?(Module) ? instance_method(name) : method(name)
-    # Replacement is because method_source will read `not_a_pipe def foo; ...` from source including
-    # not_a_pipe decorator.
-    src = meth.source.sub(/not_a_pipe\s*?/, '')
+    # Replacement is because method_source will read `pipe def foo; ...` from source including
+    # pipe decorator.
+    src = meth.source.sub(/\bpipe\s*?/, '')
     src = NotAPipe.rewrite(src)
 
     if is_a?(Module)
@@ -71,12 +71,18 @@ module NotAPipe
     end
 
     def rewrite_step(node)
+      # This check is probably too naive, but this is a demo anyway.
+      # Basically, if the step of a "pipe" includes _any_ usage of a standalone `_`, we consider
+      # it doesn't need any rewriting.
       return node if node.loc.expression.source.match?(/\b_\b/)
 
+      # Otherwise, we rewrite it
       case node
       in [:send, receiver, sym, *args]
+        # ...by changing every `foo` to `foo(_)`, any `bar(1, 2, 3)` to `bar(_, 1, 2, 3)` etc
         s(:send, receiver, sym, s(:lvar, :_), *args)
       else
+        # ...and that's it so far!
         raise ArgumentError, "Unrewriteable step: #{node}"
       end
     end

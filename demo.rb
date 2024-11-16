@@ -4,7 +4,7 @@ require 'not_a_pipe'
 
 extend NotAPipe
 
-not_a_pipe def test
+pipe def test
   'test' >> _.upcase >> puts
 end
 
@@ -14,7 +14,7 @@ test
 require 'open-uri'
 require 'json'
 
-not_a_pipe def repos(username)
+pipe def repos(username)
   username >>
     ("https://api.github.com/users/%s/repos" % _) >>
     URI.open >>
