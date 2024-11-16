@@ -33,7 +33,7 @@ Basically:
 
 Inspired by a [Python’s library](https://github.com/Jordan-Kowal/pipe-operator?tab=readme-ov-file#-elixir-like-implementation) that uses the similar approach, and a [recent discussion](https://bugs.ruby-lang.org/issues/20770#note-34) in Ruby’s bug-tracker.
 
-See also an [explanatory blog-post](TODO).
+See also an [explanatory blog-post](https://zverok.space/blog/2024-11-16-elixir-pipes.html).
 
 ## Usage
 
