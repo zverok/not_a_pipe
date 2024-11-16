@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/zverok/not_a_pipe/blob/main/img/une_pipe.jpg?raw=true"/>
+  <a href="https://en.wikipedia.org/wiki/The_Treachery_of_Images"><img src="https://github.com/zverok/not_a_pipe/blob/main/img/une_pipe.jpg?raw=true"/></a>
 </p>
 
 # This is not a pipe
@@ -11,7 +11,7 @@ require 'not_a_pipe'
 
 extend NotAPipe
 
-not_a_pipe def repos(username)
+pipe def repos(username)
   username >>
     "https://api.github.com/users/#{_}/repos" >>
     URI.open >>
