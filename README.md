@@ -80,3 +80,9 @@ Comparison:
 ```
 
 Note that `not_a_pipe` is the _fastest_ version, on par only with “naive” verbose Ruby code with intermediate variables, and without `.then`-chaining (truth be told, on various runs `.then`-based version is frequently “sam-ish”). The rewrite-on-load approach is a rare way to introduce a DSL without _any_ performance penalty.
+
+## Credits
+
+* Implementation: [Victor Shepelev aka zverok](https://zverok.space)
+* The syntax is proposed by Alexandre Magro [on Ruby bug-tracker](https://bugs.ruby-lang.org/issues/20770#note-34)
+* The AST-rewriting approach is inspired by Python’s [pipe_operator](https://github.com/Jordan-Kowal/pipe-operator) library
